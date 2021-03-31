@@ -1,10 +1,20 @@
 import React from 'react';
-import { render } from 'react-dom';
 import './App.css';
 
 const App = () => {
-    render(
-        <div></div>
+    return(
+        <div className="App">
+            <h1>CRUD APP</h1>
+
+            <div className="form">  
+                <label>Movie Name:</label>
+                <input type="text" name="movieName" />
+                <label>Review:</label>
+                <input type="text" name="review" />
+
+                <button>Submit</button>
+            </div>
+        </div>
     );
 }
 
