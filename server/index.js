@@ -12,7 +12,8 @@ const db = mysql.createPool({
 app.get("/", (req,res) => {
     const sqlInsert = "INSERT INTO movie_reviews (movieName, movieReview) VALUES ('inception', 'good movie');"
     db.query(sqlInsert, (err, result) => {
-        res.send("hello ;;");
+        console.log(result);
+        res.send('success');
     });
 });
 
