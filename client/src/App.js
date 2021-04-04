@@ -8,7 +8,13 @@ const App = () => {
     const [review, setReview] = useState("");
 
     const submitReview = () => {
-
+        // for api
+        Axios.post("http://localhost:3000/api/insert", {
+            movieName: movieName, 
+            movieReview: review,
+        }).then(() => {
+            alert("success insert data");
+        });
     };
 
     return(
