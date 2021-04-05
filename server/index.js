@@ -10,8 +10,16 @@ app.use(express.json());
 const db = mysql.createConnection({
     user: 'root',
     host: 'localhost',
-    password: '', // or 'password'
+    password: 'password', // or ''
     database: 'CRUDDatabase',
+});
+
+db.connect((err) => {
+    if(err) {
+        console.log(err);
+    } else {
+        console.log("mysql...");
+    }
 });
 
 app.post('/create', (req,res) => {
@@ -27,14 +35,13 @@ app.post('/create', (req,res) => {
     (err,result) => {
         if(err) {
             console.log(err);
-            setTimeout(2000);
         } else {
             res.send("value insert");
         }
     }); 
 });
 
-app.use(bodyParser.urlencoded({extended:true}));
+//app.use(bodyParser.urlencoded({extended:true}));
 
 app.listen(3003, () => {
     console.log("running on 3003");
