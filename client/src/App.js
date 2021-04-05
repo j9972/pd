@@ -4,6 +4,8 @@ import Axios from 'axios';
 
 const App = () => {
 
+    const [name, setName] = useState('');
+
     return(
         <div className="App">
             <div className="information">
@@ -13,12 +15,13 @@ const App = () => {
                 <input type="text" />
                 <labe>Age:</labe>
                 <input type="number" />
-                <labe>Position:</labe>
-                <input type="text" />
                 <labe>Country:</labe>
+                <input type="text" />
+                <labe>Position:</labe>
                 <input type="text" />
                 <labe>Wage (year):</labe>
                 <input type="number" />
+                <button>Add Employee</button>
             </div>
         </div>
     );
