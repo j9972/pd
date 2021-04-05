@@ -1,5 +1,6 @@
 const bodyParser = require("body-parser");
 const express = require("express");
+const cors = require('cors');
 const app = express();
 const mysql = require('mysql');
 
@@ -10,26 +11,27 @@ const db = mysql.createPool({
     database: "CRUDDatabase",
 });
 
-// app.get("/", (req,res) => {
-//     const sqlInsert = "INSERT INTO movie_reviews (movieName, movieReview) VALUES ('inception', 'good movie');"
-//     db.query(sqlInsert, (err, result) => {
-//         console.log(result);
-//         res.send('success');
-//     });
-// });
+app.get("/", (req,res) => {
+    const sqlInsert = "INSERT INTO movie_reviews (movieName, movieReview) VALUES ('inception', 'good movie');"
+    db.query(sqlInsert, (err, result) => {
+        console.log(err);
+        res.send('success');
+    });
+});
 
+app.use(cors());
 app.use(bodyParser.urlencoded({extended:true}));
 
-app.post("/api/insert", (req,res) => {
+// app.post("/api/insert", (req,res) => {
 
-    const movieName = req.body.movieName
-    const movieReview = req.body.movieReview
+//     const movieName = req.body.movieName
+//     const movieReview = req.body.movieReview
 
-    const sqlInsert = "INSERT INTO movie_reviews (movieName, movieReview) VALUES ('inception', 'good movie');"
-    db.query(sqlInsert, [movieName, movieReview], (err,result) => {
-        console.log(result)
-    })
-})
+//     const sqlInsert = "INSERT INTO movie_reviews (movieName, movieReview) VALUES ('inception', 'good movie');"
+//     db.query(sqlInsert, [movieName, movieReview], (err,result) => {
+//         console.log(err);
+//     });
+// });
 
 app.listen(3003, () => {
     console.log("running on 3003");
