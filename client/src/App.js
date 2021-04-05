@@ -10,6 +10,17 @@ const App = () => {
     const [position, setPosition] = useState("");
     const [wage, setWage] = useState(0);
 
+    const addEmployee = () => {
+        Axios.post('http://localhost:3003/create', {
+            name: name, 
+            age: age, 
+            country: country, 
+            position: position, 
+            wage: wage,
+        }).then(() => {
+            console.log('success');
+        });
+    }
 
     return(
         <div className="App">
@@ -36,7 +47,7 @@ const App = () => {
                 <input type="number" onChange={(event) => {
                     setWage(event.target.value);
                 }}/>
-                <button>Add Employee</button>
+                <button onClick={addEmployee}>Add Employee</button>
             </div>
         </div>
     );
