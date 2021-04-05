@@ -24,3 +24,22 @@
 
         <button onClick={submitReview}>Submit</button>
     </div>
+
+    // index.js ( server )
+    app.get("/", (req,res) => {
+    const sqlInsert = "INSERT INTO movie_reviews (movieName, movieReview) VALUES ('inception', 'good movie');"
+    db.query(sqlInsert, (err, result) => {
+        console.log(err);
+        res.send('success');
+    });
+    });
+    // app.post("/api/insert", (req,res) => {
+
+    //     const movieName = req.body.movieName
+    //     const movieReview = req.body.movieReview
+
+    //     const sqlInsert = "INSERT INTO movie_reviews (movieName, movieReview) VALUES ('inception', 'good movie');"
+    //     db.query(sqlInsert, [movieName, movieReview], (err,result) => {
+    //         console.log(err);
+    //     });
+    // });

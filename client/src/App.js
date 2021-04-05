@@ -10,9 +10,6 @@ const App = () => {
     const [position, setPosition] = useState("");
     const [wage, setWage] = useState(0);
 
-    const displayInfo = () => {
-        console.log(name + age + country + position + wage);
-    }
 
     return(
         <div className="App">
@@ -39,7 +36,7 @@ const App = () => {
                 <input type="number" onChange={(event) => {
                     setWage(event.target.value);
                 }}/>
-                <button onClick={displayInfo}>Add Employee</button>
+                <button>Add Employee</button>
             </div>
         </div>
     );
