@@ -6,12 +6,20 @@ const App = () => {
 
     return(
         <div className="App">
-            <h1>CRUD APP</h1>
+            <div className="information">
+                <h1>CRUD APP</h1>
 
-            <labe>Name:</labe>
-            <input type="text" />
-            <labe>Age:</labe>
-            <input type="number" />
+                <labe>Name:</labe>
+                <input type="text" />
+                <labe>Age:</labe>
+                <input type="number" />
+                <labe>Position:</labe>
+                <input type="text" />
+                <labe>Country:</labe>
+                <input type="text" />
+                <labe>Wage (year):</labe>
+                <input type="number" />
+            </div>
         </div>
     );
 }
