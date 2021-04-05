@@ -4,24 +4,42 @@ import Axios from 'axios';
 
 const App = () => {
 
-    const [name, setName] = useState('');
+    const [name, setName] = useState("");
+    const [age, setAge] = useState(0);
+    const [country, setCountry] = useState("");
+    const [position, setPosition] = useState("");
+    const [wage, setWage] = useState(0);
+
+    const displayInfo = () => {
+        console.log(name + age + country + position + wage);
+    }
 
     return(
         <div className="App">
             <div className="information">
                 <h1>CRUD APP</h1>
 
-                <labe>Name:</labe>
-                <input type="text" />
-                <labe>Age:</labe>
-                <input type="number" />
-                <labe>Country:</labe>
-                <input type="text" />
-                <labe>Position:</labe>
-                <input type="text" />
-                <labe>Wage (year):</labe>
-                <input type="number" />
-                <button>Add Employee</button>
+                <label>Name:</label>
+                <input type="text" onChange={(event) => {
+                    setName(event.target.value);
+                }}/>
+                <label>Age:</label>
+                <input type="number" onChange={(event) => {
+                    setAge(event.target.value);
+                }}/>
+                <label>Country:</label>
+                <input type="text" onChange={(event) => {
+                    setCountry(event.target.value);
+                }}/>
+                <label>Position:</label>
+                <input type="text" onChange={(event) => {
+                    setPosition(event.target.value);
+                }}/>
+                <label>Wage (year):</label>
+                <input type="number" onChange={(event) => {
+                    setWage(event.target.value);
+                }}/>
+                <button onClick={displayInfo}>Add Employee</button>
             </div>
         </div>
     );
