@@ -7,19 +7,19 @@ const mysql = require('mysql');
 app.use(cors());
 app.use(express.json());
 
-// const db = mysql.createConnection({
-//     user: 'root',
-//     host: 'localhost',
-//     password: 'password', // or ''
-//     database: 'CRUDDatabase',
-// });
-
-const db = {
+const db = mysql.createConnection({
     user: 'root',
     host: 'localhost',
     password: 'password', // or ''
     database: 'CRUDDatabase',
-}
+});
+
+// const db = {
+//     user: 'pedro',
+//     host: 'localhost',
+//     password: 'password', // or ''
+//     database: 'CRUDDatabase',
+// }
 
 const handleDisconnect = () => {
     const connection = mysql.createConnection(db);
@@ -40,6 +40,17 @@ const handleDisconnect = () => {
         }
     })
 }
+
+handleDisconnect();
+
+
+db.query('SELECT * FROM CRUDDatabase', (error,results, fields) => {
+    if(error) {
+        console.log(error);
+    }
+    console.log(results, 'shits');
+});
+
 
 app.post('/create', (req,res) => {
     const name = req.body.name;
@@ -65,3 +76,5 @@ app.post('/create', (req,res) => {
 app.listen(3003, () => {
     console.log("running on 3003");
 });
+
+
