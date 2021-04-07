@@ -7,20 +7,39 @@ const mysql = require('mysql');
 app.use(cors());
 app.use(express.json());
 
-const db = mysql.createConnection({
+// const db = mysql.createConnection({
+//     user: 'root',
+//     host: 'localhost',
+//     password: 'password', // or ''
+//     database: 'CRUDDatabase',
+// });
+
+const db = {
     user: 'root',
     host: 'localhost',
     password: 'password', // or ''
     database: 'CRUDDatabase',
-});
+}
 
-db.connect((err) => {
-    if(err) {
-        console.log(err);
-    } else {
-        console.log("mysql...");
-    }
-});
+const handleDisconnect = () => {
+    const connection = mysql.createConnection(db);
+
+    connection.connect((err) => {
+        if(err) {
+            console.log('error whenn connection to db:', err);
+            setTimeout(handleDisconnect, 2000);
+        }
+    });
+
+    connection.on('error', (err) => {
+        console.log('db error', err);
+        if(err.code === 'PROTOCO_CONNECTION_LOST') {
+            handleDisconnect();
+        } else {
+            throw err;
+        }
+    })
+}
 
 app.post('/create', (req,res) => {
     const name = req.body.name;
