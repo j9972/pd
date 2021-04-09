@@ -14,42 +14,35 @@ const db = mysql.createConnection({
     database: 'CRUDDatabase',
 });
 
-// const db = {
-//     user: 'pedro',
-//     host: 'localhost',
-//     password: 'password', // or ''
-//     database: 'CRUDDatabase',
+// const handleDisconnect = () => {
+//     const connection = mysql.createConnection(db);
+
+//     connection.connect((err) => {
+//         if(err) {
+//             console.log('error whenn connection to db:', err);
+//             setTimeout(handleDisconnect, 2000);
+//         }
+//     });
+
+//     connection.on('error', (err) => {
+//         console.log('db error', err);
+//         if(err.code === 'PROTOCO_CONNECTION_LOST') {
+//             handleDisconnect();
+//         } else {
+//             throw err;
+//         }
+//     })
 // }
 
-const handleDisconnect = () => {
-    const connection = mysql.createConnection(db);
-
-    connection.connect((err) => {
-        if(err) {
-            console.log('error whenn connection to db:', err);
-            setTimeout(handleDisconnect, 2000);
-        }
-    });
-
-    connection.on('error', (err) => {
-        console.log('db error', err);
-        if(err.code === 'PROTOCO_CONNECTION_LOST') {
-            handleDisconnect();
-        } else {
-            throw err;
-        }
-    })
-}
-
-handleDisconnect();
+// handleDisconnect();
 
 
-db.query('SELECT * FROM CRUDDatabase', (error,results, fields) => {
-    if(error) {
-        console.log(error);
-    }
-    console.log(results, 'shits');
-});
+// db.query('SELECT * FROM CRUDDatabase', (error,results, fields) => {
+//     if(error) {
+//         console.log(error);
+//     }
+//     console.log(results, 'shits');
+// });
 
 
 app.post('/create', (req,res) => {
