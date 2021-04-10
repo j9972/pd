@@ -36,6 +36,24 @@ const App = () => {
         });
     };
 
+    const deleteEmployee =() => {
+        Axios.delete('http://localhost:3003/delete', {
+            name: name, 
+            age: age, 
+            country: country, 
+            position: position, 
+            wage: wage,
+        }).then(() => {
+            setEmployeeList([...employeeList, {
+                name: name, 
+                age: age, 
+                country: country, 
+                position: position, 
+                wage: wage,
+            }]);
+        });
+    };
+
     return(
         <div className="App">
             <div className="information">
@@ -76,7 +94,7 @@ const App = () => {
                             <h3>Position: {val.position}</h3> 
                             <h3>Wage: {val.wage}</h3> 
 
-                            <button className="maBtn">Delete</button>
+                            <button className="maBtn" onClick={() => {deleteEmployee(val.name)}}>Delete</button>
                             <input type="text" id="updateInput"/>
                             <button className="maBtn">Update</button>
                         </div>

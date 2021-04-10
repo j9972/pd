@@ -44,6 +44,23 @@ app.get('/employees', (req,res) => {
     });
 });
 
+app.delete('/delete', (req,res) => {
+    const name = req.body.name;
+    const age = req.body.age;
+    const country = req.body.country;
+    const position = req.body.position;
+    const wage = req.body.wage;
+    const sqlDelete = "DELETE FROM employee WHERE name = ?";
+
+    db.query(sqlDelete, name, (err,result) => {
+        if(err) {
+            console.log(err);
+        } else {
+            console.log(result);
+        }
+    })
+})
+
 app.use(bodyParser.urlencoded({extended:true}));
 
 app.listen(3003, () => {
