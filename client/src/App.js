@@ -10,6 +10,8 @@ const App = () => {
     const [position, setPosition] = useState("");
     const [wage, setWage] = useState(0);
 
+    const [employeeList, setEmployeeList] = useState([]);
+
     const addEmployee = () => {
         Axios.post('http://localhost:3003/create', {
             name: name, 
@@ -20,7 +22,13 @@ const App = () => {
         }).then(() => {
             console.log('success');
         });
-    }
+    };
+
+    const getEmployee = () => {
+        Axios.get('http://localhost:3003/employees').then((res) => {
+            setEmployeeList(res.data); // screen에 데이터 보여주기
+        });
+    };
 
     return(
         <div className="App">
@@ -48,6 +56,14 @@ const App = () => {
                     setWage(event.target.value);
                 }}/>
                 <button onClick={addEmployee}>Add Employee</button>
+            </div>
+            ----------------------------------------------------------------------------
+            <div className="employees">
+                <button onClick={getEmployee}>Show Employees</button>
+
+                {employeeList.map((val,key) => {
+                    return <div> {val.name} </div>
+                })}
             </div>
         </div>
     );
