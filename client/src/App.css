@@ -49,8 +49,13 @@ button:hover {
   margin: 20px;
 }
 
+.maBtn {
+  width: 100px;
+  height: 30px;
+  margin: 10px;
+}
+
 #updateInput {
   width: 100px;
   height: 30px;
-  margin-bottom: 10px;
 }

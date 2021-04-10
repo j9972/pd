@@ -76,9 +76,9 @@ const App = () => {
                             <h3>Position: {val.position}</h3> 
                             <h3>Wage: {val.wage}</h3> 
 
-                            <buttoon>Delete</buttoon>
+                            <button className="maBtn">Delete</button>
                             <input type="text" id="updateInput"/>
-                            <buttoon>Update</buttoon>
+                            <button className="maBtn">Update</button>
                         </div>
                     );
                 })}
