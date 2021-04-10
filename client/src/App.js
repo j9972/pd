@@ -20,7 +20,13 @@ const App = () => {
             position: position, 
             wage: wage,
         }).then(() => {
-            console.log('success');
+            setEmployeeList([...employeeList, {
+                name: name, 
+                age: age, 
+                country: country, 
+                position: position, 
+                wage: wage,
+            }]);
         });
     };
 
@@ -62,7 +68,15 @@ const App = () => {
                 <button onClick={getEmployee}>Show Employees</button>
 
                 {employeeList.map((val,key) => {
-                    return <div> {val.name} </div>
+                    return (
+                        <div className="employee"> 
+                            <h3>Name: {val.name}</h3> 
+                            <h3>Age: {val.age}</h3> 
+                            <h3>Country: {val.country}</h3> 
+                            <h3>Position: {val.position}</h3> 
+                            <h3>Wage: {val.wage}</h3> 
+                        </div>
+                    );
                 })}
             </div>
         </div>
