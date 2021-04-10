@@ -36,7 +36,7 @@ button:hover {
 }
 
 .employee {
-  width: 700px;
+  width: 550px;
   height: auto;
   border: 1px solid black;
   margin: 10px;
@@ -47,4 +47,10 @@ button:hover {
 
 .employee h3 {
   margin: 20px;
+}
+
+#updateInput {
+  width: 100px;
+  height: 30px;
+  margin-bottom: 10px;
 }
