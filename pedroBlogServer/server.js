@@ -22,6 +22,7 @@ app.get('/api/get', (req,res) => {
         //res.send(result, 'success'); -> 이러면 code: 'ERR_HTTP_INVALIDE_STATUS_CODE" 에러뜸, + nodemon app crashing뜸.
         const asult = {'result' : result}
         res.status(200).send(JSON.parse(JSON.stringify(asult)));
+        //res.send(result);
         console.log(result, '1_success');
     });
 });
