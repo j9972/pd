@@ -38,7 +38,7 @@ app.post('/api/create', (req,res) => {
     [title, text, userName],
     (err,result) => {
         if(err) {
-            console.log(err, 'err');
+            console.log(err, '2_err');
         } else {
             console.log(result, '2_success');
         }
