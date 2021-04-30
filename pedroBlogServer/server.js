@@ -27,6 +27,21 @@ app.get('/api/get', (req,res) => {
     });
 });
 
+app.get('/api/getFromId/:id', (req,res) => {
+    
+    const id = req.params.id;
+    db.query("SELECT * FROM posts WHERE id = ?", 
+    id,
+    (err,result) => {
+        if(err) {
+            console.log(err, 'err');
+        }
+        const asult = {'result' : result}
+        res.status(200).send(JSON.parse(JSON.stringify(asult)));
+        console.log(result, '1_success');
+    });
+});
+
 app.post('/api/create', (req,res) => {
 
     const userName = req.body.userName;
