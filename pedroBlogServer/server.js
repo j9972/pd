@@ -23,7 +23,7 @@ app.get('/api/get', (req,res) => {
         const asult = {'result' : result}
         res.status(200).send(JSON.parse(JSON.stringify(asult)));
         //res.send(result);
-        console.log(result, '1_success');
+        console.log(result, '0_success');
     });
 });
 
