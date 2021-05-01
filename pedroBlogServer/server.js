@@ -22,7 +22,6 @@ app.get('/api/get', (req,res) => {
         //res.send(result, 'success'); -> 이러면 code: 'ERR_HTTP_INVALIDE_STATUS_CODE" 에러뜸, + nodemon app crashing뜸.
         const asult = {'result' : result}
         res.status(200).send(JSON.parse(JSON.stringify(asult)));
-        //res.send(result);
         console.log(result, '0_success');
     });
 });
@@ -56,6 +55,19 @@ app.post('/api/create', (req,res) => {
             console.log(err, '2_err');
         } else {
             console.log(result, '2_success');
+        }
+    } );
+})
+
+app.post('/api/like/:id', (req,res) => {
+    const id = req.params.id;
+    db.query("UPDATE posts SET likes = likes + 1 WHERE id = ?",
+    id,
+    (err,result) => {
+        if(err) {
+            console.log(err, '3_err');
+        } else {
+            console.log(result, '3_success');
         }
     } );
 })
